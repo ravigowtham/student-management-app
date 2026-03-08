@@ -1,0 +1,37 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "student-management": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/student-management",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.json",
+            "assets": ["src/assets"],
+            "styles": ["src/styles.css"],
+            "scripts": []
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "student-management:build",
+            "proxyConfig": "proxy.conf.json"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "41afaa6c-48ac-45be-9e03-413030494fe4"
+  }
+}
