@@ -15,6 +15,10 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
         </div>
 
         <nav class="sidebar-nav">
+          <a routerLink="/dashboard" routerLinkActive="active" class="nav-item">
+            <span class="material-icons">dashboard</span>
+            <span>Dashboard</span>
+          </a>
           <a routerLink="/students" routerLinkActive="active" class="nav-item">
             <span class="material-icons">people</span>
             <span>Students</span>

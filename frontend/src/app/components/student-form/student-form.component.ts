@@ -49,10 +49,10 @@ import { Student } from '../../models/models';
             type="email"
             [(ngModel)]="form.email"
             placeholder="john.doe@university.edu"
-            [class.ng-invalid]="submitted && !form.email"
+            [class.ng-invalid]="submitted && emailError"
             [class.ng-touched]="submitted"
           />
-          <div class="form-error" *ngIf="submitted && !form.email">Email is required</div>
+          <div class="form-error" *ngIf="submitted && emailError">{{ emailError }}</div>
         </div>
 
         <div class="form-row">
@@ -62,7 +62,10 @@ import { Student } from '../../models/models';
               class="form-control"
               [(ngModel)]="form.phone"
               placeholder="+1 (555) 123-4567"
+              [class.ng-invalid]="submitted && phoneError"
+              [class.ng-touched]="submitted"
             />
+            <div class="form-error" *ngIf="submitted && phoneError">{{ phoneError }}</div>
           </div>
           <div class="form-group">
             <label>Date of Birth</label>
@@ -108,6 +111,20 @@ export class StudentFormComponent implements OnInit {
     return !!this.student?.id;
   }
 
+  get emailError(): string | null {
+    if (!this.form.email) return 'Email is required';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.form.email)) return 'Enter a valid email address';
+    return null;
+  }
+
+  get phoneError(): string | null {
+    if (!this.form.phone) return null;
+    const phoneRegex = /^[+]?[\d\s\-().]{7,20}$/;
+    if (!phoneRegex.test(this.form.phone)) return 'Enter a valid phone number';
+    return null;
+  }
+
   get dobError(): string | null {
     if (!this.form.dateOfBirth) return null;
     if (this.form.dateOfBirth >= this.today) return 'Date of birth must be in the past';
@@ -122,7 +139,7 @@ export class StudentFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (!this.form.firstName || !this.form.lastName || !this.form.email || this.dobError) return;
+    if (!this.form.firstName || !this.form.lastName || this.emailError || this.phoneError || this.dobError) return;
     this.save.emit({ ...this.form });
   }
 }

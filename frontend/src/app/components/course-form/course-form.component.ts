@@ -37,10 +37,10 @@ import { Course } from '../../models/models';
               min="1"
               max="12"
               [(ngModel)]="form.credits"
-              [class.ng-invalid]="submitted && !form.credits"
+              [class.ng-invalid]="submitted && creditsError"
               [class.ng-touched]="submitted"
             />
-            <div class="form-error" *ngIf="submitted && !form.credits">Credits required (1-12)</div>
+            <div class="form-error" *ngIf="submitted && creditsError">{{ creditsError }}</div>
           </div>
         </div>
 
@@ -83,7 +83,10 @@ import { Course } from '../../models/models';
               min="1"
               [(ngModel)]="form.maxCapacity"
               placeholder="e.g. 30"
+              [class.ng-invalid]="submitted && capacityError"
+              [class.ng-touched]="submitted"
             />
+            <div class="form-error" *ngIf="submitted && capacityError">{{ capacityError }}</div>
           </div>
         </div>
 
@@ -117,6 +120,18 @@ export class CourseFormComponent implements OnInit {
     return !!this.course?.id;
   }
 
+  get creditsError(): string | null {
+    if (!this.form.credits) return 'Credits are required';
+    if (this.form.credits < 1 || this.form.credits > 12) return 'Credits must be between 1 and 12';
+    return null;
+  }
+
+  get capacityError(): string | null {
+    if (this.form.maxCapacity == null) return null;
+    if (this.form.maxCapacity < 1) return 'Max capacity must be at least 1';
+    return null;
+  }
+
   ngOnInit() {
     if (this.course) {
       this.form = { ...this.course };
@@ -125,7 +140,7 @@ export class CourseFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (!this.form.courseCode || !this.form.courseName || !this.form.credits) return;
+    if (!this.form.courseCode || !this.form.courseName || this.creditsError || this.capacityError) return;
     this.save.emit({ ...this.form });
   }
 }
