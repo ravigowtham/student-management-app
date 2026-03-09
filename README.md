@@ -1,6 +1,6 @@
 # Student Management System
 
-A full-stack student management application built with **Angular 18+**, **Spring Boot 3**, and **H2 (embedded database)**.
+A full-stack student management application built with **Angular 18+**, **Spring Boot 3**, and **MySQL**.
 
 ## Features
 
@@ -52,8 +52,13 @@ student-management-app/
 - **Maven 3.8+**
 - **Node.js 18+** and **npm 9+**
 - **Angular CLI 18+** (`npm install -g @angular/cli`)
+- **MySQL 8+** (running locally)
 
-> No external database needed -- the app uses **H2 in-memory database** which starts automatically.
+> The app connects to a local MySQL instance. The database `studentdb` is created automatically if it doesn't exist. By default it uses username `root` with no password. If your MySQL has a password, set it via the `MYSQL_PASSWORD` environment variable before starting the backend:
+> ```bash
+> export MYSQL_PASSWORD=your_password
+> ```
+> You can also override the username with `MYSQL_USERNAME` if needed.
 
 ---
 
@@ -65,8 +70,6 @@ mvn spring-boot:run
 ```
 
 The API will be available at `http://localhost:8080/api`.
-
-H2 Console is available at `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:mem:testdb`, username: `sa`, no password).
 
 ### API Endpoints
 
@@ -123,7 +126,7 @@ Unit tests cover:
 |------------|-----------------------------|
 | Frontend   | Angular 18+, TypeScript, RxJS |
 | Backend    | Spring Boot 3.3, Java 17   |
-| Database   | H2 (embedded, in-memory)    |
+| Database   | MySQL 8+                    |
 | ORM        | Hibernate / Spring Data JPA |
 | Validation | Jakarta Bean Validation     |
 | Testing    | JUnit 5, Mockito, MockMvc  |
