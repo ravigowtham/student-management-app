@@ -54,11 +54,14 @@ student-management-app/
 - **Angular CLI 18+** (`npm install -g @angular/cli`)
 - **MySQL 8+** (running locally)
 
-> The app connects to a local MySQL instance. The database `studentdb` is created automatically if it doesn't exist. By default it uses username `root` with no password. If your MySQL has a password, set it via the `MYSQL_PASSWORD` environment variable before starting the backend:
-> ```bash
-> export MYSQL_PASSWORD=your_password
+> The app connects to a local MySQL instance. The database `studentdb` is created automatically if it doesn't exist.
+>
+> Before running the backend, update the `backend/.env` file with your MySQL credentials:
 > ```
-> You can also override the username with `MYSQL_USERNAME` if needed.
+> MYSQL_USERNAME=your_mysql_username
+> MYSQL_PASSWORD=your_mysql_password
+> ```
+> If your MySQL uses the default `root` user with no password, you can leave `MYSQL_PASSWORD` empty.
 
 ---
 
