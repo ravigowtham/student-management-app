@@ -48,31 +48,68 @@ student-management-app/
 
 ## Prerequisites
 
-- **Java 17+**
-- **Maven 3.8+**
-- **Node.js 18+** and **npm 9+**
-- **Angular CLI 18+** (`npm install -g @angular/cli`)
-- **MySQL 8+** (running locally)
+Make sure the following are installed before continuing:
 
-> The app connects to a local MySQL instance. The database `studentdb` is created automatically if it doesn't exist.
->
-> Before running the backend, update the `backend/.env` file with your MySQL credentials:
-> ```
-> MYSQL_USERNAME=your_mysql_username
-> MYSQL_PASSWORD=your_mysql_password
-> ```
-> If your MySQL uses the default `root` user with no password, you can leave `MYSQL_PASSWORD` empty.
+- **Java 17+** — [Download](https://adoptium.net/)
+- **Maven 3.8+** — [Download](https://maven.apache.org/download.cgi)
+- **Node.js 18+** and **npm 9+** — [Download](https://nodejs.org/)
+- **MySQL 8+** — [Download](https://dev.mysql.com/downloads/mysql/) (must be running locally)
+- **Angular CLI 18+**
+
+```bash
+npm install -g @angular/cli
+```
 
 ---
 
-## Running the Backend
+## Setup
+
+### 1. Clone the repository
 
 ```bash
-cd student-management-app/backend
+git clone https://github.com/your-username/student-management-app.git
+cd student-management-app
+```
+
+### 2. Configure the database
+
+The app connects to a local MySQL instance. The database `studentdb` is created automatically on first run.
+
+Create a `backend/.env` file and add your MySQL credentials:
+
+```
+MYSQL_USERNAME=your_mysql_username
+MYSQL_PASSWORD=your_mysql_password
+```
+
+> If your MySQL uses the default `root` user with no password, leave `MYSQL_PASSWORD` empty.
+
+---
+
+## Running the App
+
+> **Important:** Start the backend first, then the frontend.
+
+### Step 1 — Start the backend
+
+```bash
+cd backend
 mvn spring-boot:run
 ```
 
 The API will be available at `http://localhost:8080/api`.
+
+### Step 2 — Start the frontend
+
+```bash
+cd frontend
+npm install
+ng serve
+```
+
+Open `http://localhost:4200` in your browser.
+
+The dev server proxies `/api` requests to `http://localhost:8080` via `proxy.conf.json`.
 
 ### API Endpoints
 
@@ -94,24 +131,10 @@ The API will be available at `http://localhost:8080/api`.
 
 ---
 
-## Running the Frontend
-
-```bash
-cd student-management-app/frontend
-npm install
-ng serve
-```
-
-Open `http://localhost:4200` in your browser.
-
-The dev server proxies `/api` requests to `http://localhost:8080` via `proxy.conf.json`.
-
----
-
 ## Running Backend Tests
 
 ```bash
-cd student-management-app/backend
+cd backend
 mvn test
 ```
 
