@@ -1,6 +1,6 @@
 # Student Management System
 
-A full-stack student management application built with **Angular 18+**, **Spring Boot 3**, and **MySQL**.
+A full-stack student management application built with **Angular 19+**, **Spring Boot 3**, and **MySQL**.
 
 ## Features
 
@@ -32,7 +32,7 @@ student-management-app/
 │       └── resources/
 │           └── application.properties
 │
-└── frontend/                   # Angular 18+ SPA
+└── frontend/                   # Angular 19+ SPA
     └── src/app/
         ├── components/         # Standalone components
         │   ├── student-list/   # Student table with search
@@ -54,7 +54,7 @@ Make sure the following are installed before continuing:
 - **Maven 3.8+** — [Download](https://maven.apache.org/download.cgi)
 - **Node.js 18+** and **npm 9+** — [Download](https://nodejs.org/)
 - **MySQL 8+** — [Download](https://dev.mysql.com/downloads/mysql/) (must be running locally)
-- **Angular CLI 18+**
+- **Angular CLI 19+**
 
 ```bash
 npm install -g @angular/cli
@@ -150,7 +150,7 @@ Unit tests cover:
 
 | Layer      | Technology                  |
 |------------|-----------------------------|
-| Frontend   | Angular 18+, TypeScript, RxJS |
+| Frontend   | Angular 19+, TypeScript, RxJS |
 | Backend    | Spring Boot 3.3, Java 17   |
 | Database   | MySQL 8+                    |
 | ORM        | Hibernate / Spring Data JPA |
