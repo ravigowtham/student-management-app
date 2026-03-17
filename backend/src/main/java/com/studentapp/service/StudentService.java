@@ -123,8 +123,6 @@ public class StudentService {
                 .collect(Collectors.toList());
     }
 
-    // --- Mapping helpers ---
-
     private StudentDTO toDTO(Student student) {
         return StudentDTO.builder()
                 .id(student.getId())

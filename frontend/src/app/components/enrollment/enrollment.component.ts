@@ -15,12 +15,10 @@ import { Student, Course } from '../../models/models';
         <h2>Course Enrollment</h2>
       </div>
 
-      <!-- Loading Spinner -->
       <div *ngIf="isLoading" style="display:flex;justify-content:center;padding:2rem;">
         <span class="material-icons" style="animation:spin 1s linear infinite;font-size:2rem;color:var(--primary);">autorenew</span>
       </div>
 
-      <!-- Enrollment Form -->
       <div class="card" style="margin-bottom: 1.5rem;" *ngIf="!isLoading">
         <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 1.25rem;">
           <span class="material-icons" style="vertical-align: middle; margin-right: 0.4rem; color: var(--primary);">how_to_reg</span>
@@ -69,7 +67,6 @@ import { Student, Course } from '../../models/models';
         </div>
       </div>
 
-      <!-- Enrolled Students per Course -->
       <div class="card">
         <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 1.25rem;">
           <span class="material-icons" style="vertical-align: middle; margin-right: 0.4rem; color: var(--accent);">groups</span>
@@ -121,7 +118,6 @@ import { Student, Course } from '../../models/models';
         </div>
       </div>
 
-      <!-- Toast -->
       <div *ngIf="toast" class="toast" [ngClass]="toast.type === 'success' ? 'toast-success' : 'toast-error'">
         {{ toast.message }}
       </div>
@@ -162,7 +158,6 @@ export class EnrollmentComponent implements OnInit {
     if (!this.selectedStudentId) return this.courses;
     const student = this.students.find(s => s.id === this.selectedStudentId);
     if (!student) return this.courses;
-    // Show all courses, enrollment logic is on backend
     return this.courses;
   }
 

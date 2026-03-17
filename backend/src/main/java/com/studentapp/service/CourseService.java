@@ -81,8 +81,6 @@ public class CourseService {
         log.info("Course deleted with id: {}", id);
     }
 
-    // --- Mapping helpers ---
-
     private CourseDTO toDTO(Course course) {
         return CourseDTO.builder()
                 .id(course.getId())

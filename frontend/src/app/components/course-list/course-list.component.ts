@@ -18,12 +18,10 @@ import { CourseFormComponent } from '../course-form/course-form.component';
         </button>
       </div>
 
-      <!-- Loading Spinner -->
       <div *ngIf="isLoading" style="display:flex;justify-content:center;padding:2rem;">
         <span class="material-icons" style="animation:spin 1s linear infinite;font-size:2rem;color:var(--primary);">autorenew</span>
       </div>
 
-      <!-- Course Cards Grid -->
       <div class="courses-grid" *ngIf="!isLoading && courses.length > 0; else emptyState">
         <div class="course-card card" *ngFor="let course of courses">
           <div class="course-card-header">
@@ -65,7 +63,6 @@ import { CourseFormComponent } from '../course-form/course-form.component';
         </div>
       </ng-template>
 
-      <!-- Form Modal -->
       <app-course-form
         *ngIf="showForm"
         [course]="selectedCourse"
@@ -73,7 +70,6 @@ import { CourseFormComponent } from '../course-form/course-form.component';
         (close)="showForm = false"
       ></app-course-form>
 
-      <!-- Delete Confirmation -->
       <div class="modal-overlay" *ngIf="showDeleteConfirm" (click)="showDeleteConfirm = false">
         <div class="modal-content" (click)="$event.stopPropagation()" style="max-width: 400px;">
           <div class="modal-header"><h3>Delete Course</h3></div>
@@ -87,7 +83,6 @@ import { CourseFormComponent } from '../course-form/course-form.component';
         </div>
       </div>
 
-      <!-- Toast -->
       <div *ngIf="toast" class="toast" [ngClass]="toast.type === 'success' ? 'toast-success' : 'toast-error'">
         {{ toast.message }}
       </div>

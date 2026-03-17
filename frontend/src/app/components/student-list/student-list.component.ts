@@ -18,7 +18,6 @@ import { StudentFormComponent } from '../student-form/student-form.component';
         </button>
       </div>
 
-      <!-- Search -->
       <div class="card" style="margin-bottom: 1.25rem; padding: 0.85rem 1.25rem;">
         <div style="display:flex; align-items:center; gap:0.5rem;">
           <span class="material-icons" style="color:var(--text-muted); font-size:1.2rem;">search</span>
@@ -31,7 +30,6 @@ import { StudentFormComponent } from '../student-form/student-form.component';
         </div>
       </div>
 
-      <!-- Table -->
       <div class="card">
         <div *ngIf="isLoading" style="display:flex;justify-content:center;padding:2rem;">
           <span class="material-icons" style="animation:spin 1s linear infinite;font-size:2rem;color:var(--primary);">autorenew</span>
@@ -86,7 +84,6 @@ import { StudentFormComponent } from '../student-form/student-form.component';
         </ng-template>
       </div>
 
-      <!-- Form Modal -->
       <app-student-form
         *ngIf="showForm"
         [student]="selectedStudent"
@@ -94,7 +91,6 @@ import { StudentFormComponent } from '../student-form/student-form.component';
         (close)="showForm = false"
       ></app-student-form>
 
-      <!-- Delete Confirmation -->
       <div class="modal-overlay" *ngIf="showDeleteConfirm" (click)="showDeleteConfirm = false">
         <div class="modal-content" (click)="$event.stopPropagation()" style="max-width: 400px;">
           <div class="modal-header">
@@ -112,7 +108,6 @@ import { StudentFormComponent } from '../student-form/student-form.component';
         </div>
       </div>
 
-      <!-- Toast -->
       <div *ngIf="toast" class="toast" [ngClass]="toast.type === 'success' ? 'toast-success' : 'toast-error'">
         {{ toast.message }}
       </div>

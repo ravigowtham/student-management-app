@@ -7,7 +7,6 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
   template: `
     <div class="app-shell">
-      <!-- Sidebar -->
       <aside class="sidebar">
         <div class="sidebar-brand">
           <span class="material-icons">school</span>
@@ -38,7 +37,6 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
         </div>
       </aside>
 
-      <!-- Main Content -->
       <main class="main-content">
         <router-outlet></router-outlet>
       </main>
